@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-docugenerate",
   "version": "0.1.0",
   "description": "",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.docugenerate.com/",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "DocuGenerate",
+    "email": "support@docugenerate.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/docugenerate/n8n-nodes-docugenerate"
   },
   "engines": {
     "node": ">=20.15"
