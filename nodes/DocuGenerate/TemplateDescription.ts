@@ -81,7 +81,7 @@ export const templateOperations: INodeProperties[] = [
 			},
 		],
 		default: 'create',
-	},
+	}
 ];
 
 // Here we define what to show when the `create` operation is selected.
@@ -201,7 +201,7 @@ const createTemplate: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-	},
+	}
 ];
 
 // Here we define what to show when the `list` operation is selected.
@@ -227,7 +227,7 @@ const getTemplate: INodeProperties[] = [
 			},
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
-	},
+	}
 ];
 
 // Here we define what to show when the `update` operation is selected.
@@ -362,7 +362,7 @@ const updateTemplate: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-	},
+	}
 ];
 
 // Here we define what to show when the `delete` operation is selected.
@@ -383,7 +383,7 @@ const deleteTemplate: INodeProperties[] = [
 			},
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
-	},
+	}
 ];
 
 export const templateFields: INodeProperties[] = [

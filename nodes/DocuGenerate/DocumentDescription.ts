@@ -105,25 +105,6 @@ const generateDocument: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Data',
-		name: 'data',
-		type: 'json',
-		default: '{}',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-			},
-		},
-		description: 'JSON data to populate the template. Can be an object or array of objects.',
-		routing: {
-			send: {
-				property: 'data',
-				type: 'body',
-			},
-		},
-	},
-	{
 		displayName: 'Document Name',
 		name: 'name',
 		type: 'string',
@@ -166,16 +147,12 @@ const generateDocument: INodeProperties[] = [
 		name: 'outputFormat',
 		type: 'options',
 		options: [
-			{ name: 'DOC', value: '.doc' },
-			{ name: 'DOCX', value: '.docx' },
-			{ name: 'HTML', value: '.html' },
-			{ name: 'ODT', value: '.odt' },
-			{ name: 'PDF', value: '.pdf' },
-			{ name: 'PDF/A-1B', value: '.pdf/a-1b' },
-			{ name: 'PDF/A-2B', value: '.pdf/a-2b' },
-			{ name: 'PDF/A-3B', value: '.pdf/a-3b' },
-			{ name: 'PNG', value: '.png' },
-			{ name: 'TXT', value: '.txt' },
+			{ name: 'Microsoft Word (.docx)', value: '.docx' },
+			{ name: 'Microsoft Word 2007 (.doc)', value: '.doc' },
+			{ name: 'OpenDocument Format (.odt)', value: '.odt' },
+			{ name: 'PDF (.pdf)', value: '.pdf' },
+			{ name: 'Plain Text (.txt)', value: '.txt' },
+			{ name: 'PNG (.png)', value: '.png' }
 		],
 		default: '.docx',
 		displayOptions: {
@@ -193,108 +170,24 @@ const generateDocument: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Output Quality',
-		name: 'outputQuality',
-		type: 'number',
-		default: 100,
-		typeOptions: {
-			minValue: 1,
-			maxValue: 100,
-		},
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-				outputFormat: ['.pdf', '.pdf/a-1b', '.pdf/a-2b', '.pdf/a-3b', '.png'],
-			},
-		},
-		description: 'Quality of the generated document (1-100, higher is better quality but larger file size)',
-		routing: {
-			send: {
-				property: 'output_quality',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Single File',
-		name: 'singleFile',
-		type: 'boolean',
-		default: true,
+		displayName: 'Data',
+		name: 'data',
+		type: 'json',
+		default: '[{\n"": ""\n}]',
 		displayOptions: {
 			show: {
 				resource: ['document'],
 				operation: ['generate'],
 			},
 		},
-		description: 'Whether to combine all generated documents into a single file or create a ZIP archive',
+		description: 'JSON data to populate the template. Can be an object or array of objects.',
 		routing: {
 			send: {
-				property: 'single_file',
+				property: 'data',
 				type: 'body',
 			},
 		},
-	},
-	{
-		displayName: 'Page Break',
-		name: 'pageBreak',
-		type: 'boolean',
-		default: true,
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-				singleFile: [true],
-			},
-		},
-		description: 'Whether to add a page break after each data row',
-		routing: {
-			send: {
-				property: 'page_break',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Merge With PDF',
-		name: 'mergeWith',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-				outputFormat: ['.pdf', '.pdf/a-1b', '.pdf/a-2b', '.pdf/a-3b'],
-			},
-		},
-		description: 'URL or Base64-encoded data URI of PDF file to merge at the end',
-		routing: {
-			send: {
-				property: 'merge_with',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Attach File',
-		name: 'attach',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-				outputFormat: ['.pdf', '.pdf/a-1b', '.pdf/a-2b', '.pdf/a-3b'],
-			},
-		},
-		description: 'URL or Base64-encoded data URI of file to attach to the PDF',
-		routing: {
-			send: {
-				property: 'attach',
-				type: 'body',
-			},
-		},
-	},
+	}
 ];
 
 // Here we define what to show when the `list` operation is selected.
@@ -315,7 +208,7 @@ const listDocuments: INodeProperties[] = [
 			},
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
-	},
+	}
 ];
 
 // Here we define what to show when the `get` operation is selected.
@@ -333,7 +226,7 @@ const getDocument: INodeProperties[] = [
 			},
 		},
 		description: 'The ID of the document to retrieve',
-	},
+	}
 ];
 
 // Here we define what to show when the `update` operation is selected.
@@ -371,7 +264,7 @@ const updateDocument: INodeProperties[] = [
 				type: 'body',
 			},
 		},
-	},
+	}
 ];
 
 // Here we define what to show when the `delete` operation is selected.
@@ -389,7 +282,7 @@ const deleteDocument: INodeProperties[] = [
 			},
 		},
 		description: 'The ID of the document to delete',
-	},
+	}
 ];
 
 export const documentFields: INodeProperties[] = [
