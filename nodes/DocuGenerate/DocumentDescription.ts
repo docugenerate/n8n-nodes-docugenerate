@@ -105,7 +105,7 @@ const generateDocument: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Document Name',
+		displayName: 'Name',
 		name: 'name',
 		type: 'string',
 		default: '',
@@ -115,7 +115,7 @@ const generateDocument: INodeProperties[] = [
 				operation: ['generate'],
 			},
 		},
-		description: 'Logical name for the document. If not provided, it will use the template name.',
+		description: 'Name of the generated document. Defaults to the template’s name.',
 		routing: {
 			send: {
 				property: 'name',
@@ -124,26 +124,7 @@ const generateDocument: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Output Name',
-		name: 'outputName',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['document'],
-				operation: ['generate'],
-			},
-		},
-		description: 'Filename (without extension) of the generated document',
-		routing: {
-			send: {
-				property: 'output_name',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Output Format',
+		displayName: 'Format',
 		name: 'outputFormat',
 		type: 'options',
 		options: [
@@ -161,7 +142,7 @@ const generateDocument: INodeProperties[] = [
 				operation: ['generate'],
 			},
 		},
-		description: 'Output format of the generated document',
+		description: 'Output format of the generated document. Defaults to .docx.',
 		routing: {
 			send: {
 				property: 'output_format',
@@ -173,14 +154,14 @@ const generateDocument: INodeProperties[] = [
 		displayName: 'Data',
 		name: 'data',
 		type: 'json',
-		default: '[{\n"": ""\n}]',
+		default: '[{\n  "": ""\n}]',
 		displayOptions: {
 			show: {
 				resource: ['document'],
 				operation: ['generate'],
 			},
 		},
-		description: 'JSON data to populate the template. Can be an object or array of objects.',
+		description: 'Data that is used to generate the document',
 		routing: {
 			send: {
 				property: 'data',
