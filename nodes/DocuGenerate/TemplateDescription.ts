@@ -212,36 +212,42 @@ const listTemplates: INodeProperties[] = [
 // Here we define what to show when the `get` operation is selected.
 const getTemplate: INodeProperties[] = [
 	{
-		displayName: 'Template ID',
+		displayName: 'Template Name or ID',
 		name: 'templateId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
+		typeOptions: {
+			loadOptionsMethod: 'getTemplates',
+		},
 		displayOptions: {
 			show: {
 				resource: ['template'],
 				operation: ['get'],
 			},
 		},
-		description: 'The ID of the template to retrieve',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 ];
 
 // Here we define what to show when the `update` operation is selected.
 const updateTemplate: INodeProperties[] = [
 	{
-		displayName: 'Template ID',
+		displayName: 'Template Name or ID',
 		name: 'templateId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
+		typeOptions: {
+			loadOptionsMethod: 'getTemplates',
+		},
 		displayOptions: {
 			show: {
 				resource: ['template'],
 				operation: ['update'],
 			},
 		},
-		description: 'The ID of the template to update',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 	{
 		displayName: 'Template File',
@@ -362,18 +368,21 @@ const updateTemplate: INodeProperties[] = [
 // Here we define what to show when the `delete` operation is selected.
 const deleteTemplate: INodeProperties[] = [
 	{
-		displayName: 'Template ID',
+		displayName: 'Template Name or ID',
 		name: 'templateId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
+		typeOptions: {
+			loadOptionsMethod: 'getTemplates',
+		},
 		displayOptions: {
 			show: {
 				resource: ['template'],
 				operation: ['delete'],
 			},
 		},
-		description: 'The ID of the template to delete',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 ];
 
