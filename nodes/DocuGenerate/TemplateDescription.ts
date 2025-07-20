@@ -14,7 +14,7 @@ export const templateOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Create',
+				name: 'Create Template',
 				value: 'create',
 				description: 'Create a new template',
 				action: 'Create template',
@@ -29,7 +29,7 @@ export const templateOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Delete',
+				name: 'Delete Template',
 				value: 'delete',
 				description: 'Delete a template by ID',
 				action: 'Delete template',
@@ -41,7 +41,7 @@ export const templateOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Get',
+				name: 'Get Template',
 				value: 'get',
 				description: 'Get a template by ID',
 				action: 'Get template',
@@ -53,7 +53,7 @@ export const templateOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'List',
+				name: 'List Templates',
 				value: 'list',
 				description: 'List all templates',
 				action: 'List templates',
@@ -65,7 +65,7 @@ export const templateOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Update',
+				name: 'Update Template',
 				value: 'update',
 				description: 'Update a template by ID',
 				action: 'Update template',

@@ -14,7 +14,7 @@ export const documentOperations: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Delete',
+				name: 'Delete Document',
 				value: 'delete',
 				description: 'Delete a document by ID',
 				action: 'Delete document',
@@ -26,7 +26,7 @@ export const documentOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Generate',
+				name: 'Generate Document',
 				value: 'generate',
 				description: 'Generate a document from a template',
 				action: 'Generate document',
@@ -38,7 +38,7 @@ export const documentOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Get',
+				name: 'Get Document',
 				value: 'get',
 				description: 'Get a document by ID',
 				action: 'Get document',
@@ -50,7 +50,7 @@ export const documentOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'List',
+				name: 'List Documents',
 				value: 'list',
 				description: 'List documents for a template',
 				action: 'List documents',
@@ -62,7 +62,7 @@ export const documentOperations: INodeProperties[] = [
 				},
 			},
 			{
-				name: 'Update',
+				name: 'Update Document',
 				value: 'update',
 				description: 'Update a document by ID',
 				action: 'Update document',
