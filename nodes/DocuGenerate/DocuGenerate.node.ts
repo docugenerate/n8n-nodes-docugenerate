@@ -1,4 +1,11 @@
-import { INodeType, INodeTypeDescription, NodeConnectionType } from 'n8n-workflow';
+import { 
+	ILoadOptionsFunctions,
+	INodePropertyOptions,
+	INodeType, 
+	INodeTypeDescription, 
+	IRequestOptions,
+	NodeConnectionType 
+} from 'n8n-workflow';
 import { templateOperations, templateFields } from './TemplateDescription';
 import { documentOperations, documentFields } from './DocumentDescription';
 
@@ -56,5 +63,38 @@ export class DocuGenerate implements INodeType {
 			...documentFields,
 			...templateFields
 		],
+	};
+
+	methods = {
+		loadOptions: {
+			async getTemplates(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+				const credentials = await this.getCredentials('docugenerateApi');
+				
+				const requestOptions: IRequestOptions = {
+					method: 'GET',
+					url: 'https://api.docugenerate.com/v1/template',
+					headers: {
+						'Authorization': credentials.apiKey as string,
+						'Accept': 'application/json',
+					},
+					json: true,
+				};
+
+				try {
+					const templates = await this.helpers.request(requestOptions);
+					
+					if (Array.isArray(templates)) {
+						return templates.map((template: any) => ({
+							name: template.name,
+							value: template.id
+						}));
+					}
+					
+					return [];
+				} catch (error) {
+					return [];
+				}
+			}
+		}
 	};
 }

@@ -82,18 +82,21 @@ export const documentOperations: INodeProperties[] = [
 // We do that by adding `operation: ["generate"]` to `displayOptions.show`
 const generateDocument: INodeProperties[] = [
 	{
-		displayName: 'Template ID',
+		displayName: 'Template Name or ID',
 		name: 'templateId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
+		typeOptions: {
+			loadOptionsMethod: 'getTemplates',
+		},
 		displayOptions: {
 			show: {
 				resource: ['document'],
 				operation: ['generate'],
 			},
 		},
-		description: 'ID of the template to use for generating the document',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		routing: {
 			send: {
 				property: 'template_id',
@@ -297,18 +300,21 @@ const generateDocument: INodeProperties[] = [
 // Here we define what to show when the `list` operation is selected.
 const listDocuments: INodeProperties[] = [
 	{
-		displayName: 'Template ID',
+		displayName: 'Template Name or ID',
 		name: 'templateId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
+		typeOptions: {
+			loadOptionsMethod: 'getTemplates',
+		},
 		displayOptions: {
 			show: {
 				resource: ['document'],
 				operation: ['list'],
 			},
 		},
-		description: 'ID of the template to list documents for',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 ];
 
