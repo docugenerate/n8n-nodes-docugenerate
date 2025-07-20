@@ -48,21 +48,25 @@ export class DocuGenerate implements INodeType {
 					{
 						name: 'Document',
 						value: 'document',
-						description: 'Create and manage documents'
+						description: 'Manage documents'
 					},
 					{
 						name: 'Template',
 						value: 'template',
-						description: 'Create and manage templates'
+						description: 'Manage templates'
 					}
 				],
 				default: 'template',
 			},
+			
+			// Document
 			...documentOperations,
-			...templateOperations,
 			...documentFields,
+			
+			// Template
+			...templateOperations,
 			...templateFields
-		],
+		]
 	};
 
 	methods = {

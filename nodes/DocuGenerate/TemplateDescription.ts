@@ -9,25 +9,10 @@ export const templateOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['template'],
-			},
+				resource: ['template']
+			}
 		},
 		options: [
-			{
-				name: 'Create Template',
-				value: 'create',
-				description: 'Create a new template',
-				action: 'Create template',
-				routing: {
-					request: {
-						method: 'POST',
-						url: '/v1/template',
-						headers: {
-							'Content-Type': 'multipart/form-data',
-						},
-					},
-				},
-			},
 			{
 				name: 'Delete Template',
 				value: 'delete',
@@ -36,9 +21,9 @@ export const templateOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/v1/template/{{$parameter.templateId}}',
-					},
-				},
+						url: '=/v1/template/{{$parameter.templateId}}'
+					}
+				}
 			},
 			{
 				name: 'Get Template',
@@ -48,9 +33,9 @@ export const templateOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/v1/template/{{$parameter.templateId}}',
-					},
-				},
+						url: '=/v1/template/{{$parameter.templateId}}'
+					}
+				}
 			},
 			{
 				name: 'List Templates',
@@ -60,71 +45,12 @@ export const templateOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '/v1/template',
-					},
-				},
-			},
-			{
-				name: 'Update Template',
-				value: 'update',
-				description: 'Update a template by ID',
-				action: 'Update template',
-				routing: {
-					request: {
-						method: 'PUT',
-						url: '=/v1/template/{{$parameter.templateId}}',
-						headers: {
-							'Content-Type': 'multipart/form-data',
-						},
-					},
-				},
-			},
+						url: '/v1/template'
+					}
+				}
+			}
 		],
-		default: 'create',
-	}
-];
-
-// Here we define what to show when the `create` operation is selected.
-// We do that by adding `operation: ["create"]` to `displayOptions.show`
-const createTemplate: INodeProperties[] = [
-	{
-		displayName: 'Template File',
-		name: 'file',
-		type: 'string',
-		default: '',
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['template'],
-				operation: ['create'],
-			},
-		},
-		description: 'Binary data property containing the template file (.docx, .doc, .odt, .rtf, .txt, .sql, .html)',
-		routing: {
-			send: {
-				property: 'file',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Template Name',
-		name: 'name',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['template'],
-				operation: ['create'],
-			},
-		},
-		description: 'The template name. If not provided, it will be initialized with the uploaded file name.',
-		routing: {
-			send: {
-				property: 'name',
-				type: 'body',
-			},
-		},
+		default: 'list'
 	}
 ];
 
@@ -142,74 +68,15 @@ const getTemplate: INodeProperties[] = [
 		default: '',
 		required: true,
 		typeOptions: {
-			loadOptionsMethod: 'getTemplates',
+			loadOptionsMethod: 'getTemplates'
 		},
 		displayOptions: {
 			show: {
 				resource: ['template'],
-				operation: ['get'],
-			},
+				operation: ['get']
+			}
 		},
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
-	}
-];
-
-// Here we define what to show when the `update` operation is selected.
-const updateTemplate: INodeProperties[] = [
-	{
-		displayName: 'Template Name or ID',
-		name: 'templateId',
-		type: 'options',
-		default: '',
-		required: true,
-		typeOptions: {
-			loadOptionsMethod: 'getTemplates',
-		},
-		displayOptions: {
-			show: {
-				resource: ['template'],
-				operation: ['update'],
-			},
-		},
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
-	},
-	{
-		displayName: 'Template File',
-		name: 'file',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['template'],
-				operation: ['update'],
-			},
-		},
-		description: 'Binary data property containing the new template file (optional)',
-		routing: {
-			send: {
-				property: 'file',
-				type: 'body',
-			},
-		},
-	},
-	{
-		displayName: 'Template Name',
-		name: 'name',
-		type: 'string',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['template'],
-				operation: ['update'],
-			},
-		},
-		description: 'The template name. If not provided, it will be initialized with the uploaded file name.',
-		routing: {
-			send: {
-				property: 'name',
-				type: 'body',
-			},
-		},
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>'
 	}
 ];
 
@@ -222,24 +89,19 @@ const deleteTemplate: INodeProperties[] = [
 		default: '',
 		required: true,
 		typeOptions: {
-			loadOptionsMethod: 'getTemplates',
+			loadOptionsMethod: 'getTemplates'
 		},
 		displayOptions: {
 			show: {
 				resource: ['template'],
-				operation: ['delete'],
-			},
+				operation: ['delete']
+			}
 		},
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>'
 	}
 ];
 
 export const templateFields: INodeProperties[] = [
-	/* -------------------------------------------------------------------------- */
-	/*                                template:create                             */
-	/* -------------------------------------------------------------------------- */
-	...createTemplate,
-	
 	/* -------------------------------------------------------------------------- */
 	/*                                template:list                               */
 	/* -------------------------------------------------------------------------- */
@@ -251,12 +113,7 @@ export const templateFields: INodeProperties[] = [
 	...getTemplate,
 
 	/* -------------------------------------------------------------------------- */
-	/*                                template:update                             */
-	/* -------------------------------------------------------------------------- */
-	...updateTemplate,
-
-	/* -------------------------------------------------------------------------- */
 	/*                                template:delete                             */
 	/* -------------------------------------------------------------------------- */
-	...deleteTemplate,
+	...deleteTemplate
 ];

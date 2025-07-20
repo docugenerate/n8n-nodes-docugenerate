@@ -9,8 +9,8 @@ export const documentOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['document'],
-			},
+				resource: ['document']
+			}
 		},
 		options: [
 			{
@@ -21,9 +21,9 @@ export const documentOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'DELETE',
-						url: '=/v1/document/{{$parameter.documentId}}',
-					},
-				},
+						url: '=/v1/document/{{$parameter.documentId}}'
+					}
+				}
 			},
 			{
 				name: 'Generate Document',
@@ -33,9 +33,9 @@ export const documentOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/v1/document',
-					},
-				},
+						url: '/v1/document'
+					}
+				}
 			},
 			{
 				name: 'Get Document',
@@ -45,9 +45,9 @@ export const documentOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/v1/document/{{$parameter.documentId}}',
-					},
-				},
+						url: '=/v1/document/{{$parameter.documentId}}'
+					}
+				}
 			},
 			{
 				name: 'List Documents',
@@ -57,9 +57,9 @@ export const documentOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'GET',
-						url: '=/v1/document?template_id={{$parameter.templateId}}',
-					},
-				},
+						url: '=/v1/document?template_id={{$parameter.templateId}}'
+					}
+				}
 			},
 			{
 				name: 'Update Document',
@@ -69,12 +69,12 @@ export const documentOperations: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'PUT',
-						url: '=/v1/document/{{$parameter.documentId}}',
-					},
-				},
-			},
+						url: '=/v1/document/{{$parameter.documentId}}'
+					}
+				}
+			}
 		],
-		default: 'generate',
+		default: 'generate'
 	},
 ];
 
@@ -93,38 +93,38 @@ const generateDocument: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['generate'],
-			},
+				operation: ['generate']
+			}
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		routing: {
 			send: {
 				property: 'template_id',
-				type: 'body',
-			},
-		},
+				type: 'body'
+			}
+		}
 	},
 	{
-		displayName: 'Name',
+		displayName: 'Document Name',
 		name: 'name',
 		type: 'string',
 		default: '',
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['generate'],
-			},
+				operation: ['generate']
+			}
 		},
 		description: 'Name of the generated document. Defaults to the template’s name.',
 		routing: {
 			send: {
 				property: 'name',
-				type: 'body',
-			},
-		},
+				type: 'body'
+			}
+		}
 	},
 	{
-		displayName: 'Format',
+		displayName: 'Document Format',
 		name: 'outputFormat',
 		type: 'options',
 		options: [
@@ -139,35 +139,35 @@ const generateDocument: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['generate'],
+				operation: ['generate']
 			},
 		},
 		description: 'Output format of the generated document. Defaults to .docx.',
 		routing: {
 			send: {
 				property: 'output_format',
-				type: 'body',
-			},
-		},
+				type: 'body'
+			}
+		}
 	},
 	{
-		displayName: 'Data',
+		displayName: 'Document Data',
 		name: 'data',
 		type: 'json',
 		default: '[{\n  "": ""\n}]',
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['generate'],
-			},
+				operation: ['generate']
+			}
 		},
 		description: 'Data that is used to generate the document',
 		routing: {
 			send: {
 				property: 'data',
-				type: 'body',
-			},
-		},
+				type: 'body'
+			}
+		}
 	}
 ];
 
@@ -180,13 +180,13 @@ const listDocuments: INodeProperties[] = [
 		default: '',
 		required: true,
 		typeOptions: {
-			loadOptionsMethod: 'getTemplates',
+			loadOptionsMethod: 'getTemplates'
 		},
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['list'],
-			},
+				operation: ['list']
+			}
 		},
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	}
@@ -203,10 +203,10 @@ const getDocument: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['get'],
-			},
+				operation: ['get']
+			}
 		},
-		description: 'The ID of the document to retrieve',
+		description: 'The ID of the document to retrieve'
 	}
 ];
 
@@ -221,10 +221,10 @@ const updateDocument: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['update'],
-			},
+				operation: ['update']
+			}
 		},
-		description: 'The ID of the document to update',
+		description: 'The ID of the document to update'
 	},
 	{
 		displayName: 'Document Name',
@@ -242,9 +242,9 @@ const updateDocument: INodeProperties[] = [
 		routing: {
 			send: {
 				property: 'name',
-				type: 'body',
-			},
-		},
+				type: 'body'
+			}
+		}
 	}
 ];
 
@@ -259,10 +259,10 @@ const deleteDocument: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['document'],
-				operation: ['delete'],
-			},
+				operation: ['delete']
+			}
 		},
-		description: 'The ID of the document to delete',
+		description: 'The ID of the document to delete'
 	}
 ];
 
@@ -290,5 +290,5 @@ export const documentFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                document:delete                             */
 	/* -------------------------------------------------------------------------- */
-	...deleteDocument,
+	...deleteDocument
 ];
