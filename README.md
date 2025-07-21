@@ -1,48 +1,118 @@
-# n8n-nodes-_node-name_
+# n8n-nodes-docugenerate
 
-This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
+This is an n8n community node. It lets you use [DocuGenerate](https://www.docugenerate.com/) in your n8n workflows.
 
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
+DocuGenerate is a powerful document generation service that creates high-quality PDF documents from Word templates using
+merge tags. Automatically populate templates with dynamic data to generate invoices, contracts, reports, and other
+business documents.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
 [Installation](#installation)  
 [Operations](#operations)  
-[Credentials](#credentials)  <!-- delete if no auth needed -->  
+[Credentials](#credentials)  
 [Compatibility](#compatibility)  
-[Usage](#usage)  <!-- delete if not using this section -->  
+[Usage](#usage)  
 [Resources](#resources)  
-[Version history](#version-history)  <!-- delete if not using this section -->  
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community
+nodes documentation.
 
 ## Operations
 
-_List the operations supported by your node._
+**Document Operations:**
+- **Generate Document** - Create a document from a template with your data
+- **List Documents** - Get all documents generated from a specific template
+- **Get Document** - Retrieve details of a specific generated document
+- **Update Document** - Change the name of a generated document
+- **Delete Document** - Remove a generated document
+
+**Template Operations:**
+- **List Templates** - Retrieve all available templates
+- **Get Template** - Fetch details of a specific template including merge tags
+- **Delete Template** - Remove a template from your account
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+You need a DocuGenerate API Key to use this node.
+
+### Prerequisites
+1. Sign up for a [DocuGenerate account](https://www.docugenerate.com/)
+2. Get your unique API Key from the Developers tab in the [Settings](https://app.docugenerate.com/settings/developers) page.
+
+### Authentication Setup
+1. In n8n, go to **Credentials** → **Create New**
+2. Search for **DocuGenerate API** 
+3. Enter your API Key
+4. Test the connection
+5. Save the credential
 
 ## Compatibility
 
-_State the minimum n8n version, as well as which versions you test against. You can also include any known version incompatibility issues._
+- **Minimum n8n version:** 0.198.0
+- **Tested with:** n8n 1.0+
+- **Node API version:** 1
 
 ## Usage
 
-_This is an optional section. Use it to help users with any difficult or confusing aspects of the node._
+### Generating Documents
 
-_By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._
+The most common workflow is generating documents from templates:
+
+```
+HTTP Request (get data) → DocuGenerate (Generate Document)
+```
+
+**Data Field:** By default, the data field uses `{{ $json }}` to automatically populate with data from the previous
+node. You can also manually customize the JSON structure to match your template's merge tags.
+
+**Supported Output Formats:**
+- Microsoft Word (.docx, .doc)
+- PDF (.pdf) 
+- OpenDocument (.odt)
+- Plain Text (.txt)
+- PNG (.png)
+
+### Template Data Structure
+
+DocuGenerate templates use merge tags like `[Name]`, `[Address]`, etc. Your data should be structured as JSON arrays:
+
+```json
+[{
+  "Name": "John Doe",
+  "Address": "123 Main St",
+  "Items": [
+    {"Product": "Widget", "Price": "$10.00"},
+    {"Product": "Gadget", "Price": "$15.00"}
+  ]
+}]
+```
+
+### Example Workflows
+
+**Invoice Generation:**
+```
+Webhook → Set Variables → DocuGenerate (Generate Document) → Email
+```
+
+**Bulk Document Creation:**
+```
+Google Sheets → Split In Batches → DocuGenerate (Generate Document) → Google Drive
+```
 
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-* _Link to app/service documentation._
+* [DocuGenerate API Reference](https://api.docugenerate.com/)
+* [DocuGenerate Website](https://www.docugenerate.com/)
+* [Template Creation Guide](https://www.docugenerate.com/help/templates/)
 
-## Version history
+## Version History
 
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
-
-
+### 1.0.0 (2025-07-21)
+- Initial release
+- Template and document operations
+- Dynamic template dropdown loading
+- Auto-populating data field with previous node data
