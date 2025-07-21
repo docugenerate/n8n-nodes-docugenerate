@@ -154,14 +154,14 @@ const generateDocument: INodeProperties[] = [
 		displayName: 'Data',
 		name: 'data',
 		type: 'json',
-		default: '[{\n  "": ""\n}]',
+		default: '={{ $json }}',
 		displayOptions: {
 			show: {
 				resource: ['document'],
 				operation: ['generate']
 			}
 		},
-		description: 'Data that is used to generate the document',
+		description: 'Data that is used to generate the document. By default, uses data from the previous node, but can also be customized manually.',
 		routing: {
 			send: {
 				property: 'data',
