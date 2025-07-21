@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-docugenerate.DocuGenerate",
+	"nodeVersion": "1.0",
+	"codex": {
+		"categories": ["PDF", "Documents"],
+		"resources": {
+			"primaryDocumentation": [
+				{
+					"url": "https://api.docugenerate.com/"
+				}
+			]
+		}
+	}
+}
