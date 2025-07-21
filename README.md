@@ -115,4 +115,4 @@ Google Sheets → Split In Batches → DocuGenerate (Generate Document) → Goog
 - Initial release
 - Template and document operations
 - Dynamic template dropdown loading
-- Auto-populating data field with previous node data
+- Populate data field with previous node data by default
