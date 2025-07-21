@@ -39,7 +39,7 @@ nodes documentation.
 You need a DocuGenerate API Key to use this node.
 
 ### Prerequisites
-1. Sign up for a [DocuGenerate account](https://www.docugenerate.com/)
+1. Sign up for a [DocuGenerate account](https://app.docugenerate.com/signup)
 2. Get your unique API Key from the Developers tab in the [Settings](https://app.docugenerate.com/settings/developers) page.
 
 ### Authentication Setup
