@@ -90,18 +90,6 @@ DocuGenerate templates use merge tags like `[Name]`, `[Address]`, etc. Your data
 }]
 ```
 
-### Example Workflows
-
-**Invoice Generation:**
-```
-Webhook → Set Variables → DocuGenerate (Generate Document) → Email
-```
-
-**Bulk Document Creation:**
-```
-Google Sheets → Split In Batches → DocuGenerate (Generate Document) → Google Drive
-```
-
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
