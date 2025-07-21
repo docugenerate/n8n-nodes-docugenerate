@@ -105,7 +105,7 @@ const generateDocument: INodeProperties[] = [
 		}
 	},
 	{
-		displayName: 'Document Name',
+		displayName: 'Name',
 		name: 'name',
 		type: 'string',
 		default: '',
@@ -124,7 +124,7 @@ const generateDocument: INodeProperties[] = [
 		}
 	},
 	{
-		displayName: 'Document Format',
+		displayName: 'Format',
 		name: 'outputFormat',
 		type: 'options',
 		options: [
@@ -151,7 +151,7 @@ const generateDocument: INodeProperties[] = [
 		}
 	},
 	{
-		displayName: 'Document Data',
+		displayName: 'Data',
 		name: 'data',
 		type: 'json',
 		default: '[{\n  "": ""\n}]',
@@ -227,7 +227,7 @@ const updateDocument: INodeProperties[] = [
 		description: 'The ID of the document to update'
 	},
 	{
-		displayName: 'Document Name',
+		displayName: 'Name',
 		name: 'name',
 		type: 'string',
 		default: '',
